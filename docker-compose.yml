@@ -9,7 +9,7 @@ services:
 
   wetty:
     image: wettyoss/wetty
-    command: sh -c "--ssh-host=172.105.94.208 && --host=3033:3033"
+    command: sh -c "--ssh-host=172.105.94.208 && --port=3033:3033"
     networks:
       - app_network
 
