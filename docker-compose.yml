@@ -1,9 +1,9 @@
 version: "3.8"
 services:
   webserver:
-    build: .  # Builds your custom Nginx Dockerfile
+    build: .
     ports:
-      - "80:80"  # Single exposed port for everything
+      - "3033:3033"  # Single exposed port for everything
     networks:
       - app_network
 
