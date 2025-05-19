@@ -3,13 +3,21 @@ services:
   webserver:
     build: .
     ports:
-      - "3033:3033"  # Single exposed port for everything
+      - "80:80"  # Single exposed port for everything
     networks:
       - app_network
 
   wetty:
-    image: wettyoss/wetty
-    command: --port 3033 --ssh-host=172.105.94.208
+    image: wettyoss/wetty:latest
+    container_name: wetty
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - BASE=/wetty/
+      - SSH_USER=your_ssh_user  # Optional
+    command: --port 3033 --ssh-host 172.105.94.208 --ssh-port 22  # WeTTY now listens on 3033 inside the container
+    ports:
+      - "3033:3033"  # Maps host 3033 → container 3033
     networks:
       - app_network
 
