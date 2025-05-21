@@ -3,15 +3,16 @@ services:
   webserver:
     build: .  # Builds your custom Nginx Dockerfile
     ports:
-      - "80:80"  # Single exposed port for everything
+      - "8000:8000"  # Single exposed port for everything
     networks:
-      - app_network
+      - web_network
 
   wetty:
     image: wettyoss/wetty
-    command: --ssh-host=172.105.94.208
+    command: --ssh-host=172.105.94.208 --port=3033
     networks:
-      - app_network
+      - web_network
 
 networks:
-  app_network:
+  web_network:
+    external: true
