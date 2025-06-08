@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Create hour marks
     const hourMarks = document.getElementById('hour-marks');
     for (let i = 0; i < 12; i++) {
         const angle = (i * 30) * Math.PI / 180;
@@ -17,12 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = now.getMinutes();
         const seconds = now.getSeconds();
 
-        // Calculate angles
         const secondAngle = seconds * 6;
         const minuteAngle = minutes * 6 + seconds * 0.1;
         const hourAngle = hours * 30 + minutes * 0.5;
 
-        // Update hand positions
         document.getElementById('hour-hand').setAttribute('transform', `rotate(${hourAngle}, 150, 150)`);
         document.getElementById('minute-hand').setAttribute('transform', `rotate(${minuteAngle}, 150, 150)`);
         document.getElementById('second-hand').setAttribute('transform', `rotate(${secondAngle}, 150, 150)`);
@@ -53,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 startBtn.disabled = false;
                 startBtn.classList.remove('hidden');
                 countdownDisplay.classList.add('hidden');
-                countdownTime = 7 * 3600 + 58 * 60; // Reset timer
+                countdownTime = 7 * 3600 + 58 * 60;
             }
         }, 1000);
     }
@@ -66,12 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeString = now.toLocaleTimeString();
         document.getElementById('clock').textContent = timeString;
     }
-    // Update clock immediately and then every second
+
     updateTimer();
     setInterval(updateTimer, 1000);
 
 
-    // Update immediately and every second
     updateClock();
     setInterval(updateClock, 1000);
 
@@ -84,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.toggle('active');
     });
 
-    // Break tracking
     document.getElementById('short-break').addEventListener('click', () => {
         addBreakEntry('short');
     });
@@ -115,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    // Export functionality
+    // Export
     document.getElementById('export-btn').addEventListener('click', () => {
         const content = [
             'Time\tShort Break\tLong Break',
@@ -133,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         URL.revokeObjectURL(url);
     });
 
-    // Terminal activation
     let clickCount = 0;
     let clickTimer;
 
@@ -151,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Terminal controls
     document.getElementById('close-terminal').addEventListener('click', () => {
         document.getElementById('terminal-container').classList.add('hidden');
     });

@@ -5,7 +5,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #111;
+    background: #020024;
+    background: radial-gradient(circle,rgba(2, 0, 36, 1) 0%, rgba(21, 37, 51, 1) 35%, rgba(18, 29, 31, 1) 100%);
     color: white
 }
 
@@ -149,6 +150,19 @@ body {
 
 #export-btn:hover {
     background-color: #555;
+}
+
+#referral {
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute; 
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #terminal-container {
